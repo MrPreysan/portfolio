@@ -45,7 +45,7 @@ export default function About() {
         >
           <WordsPullUpMultiStyle
             segments={[
-              { text: 'I am Simon Hryhorovych,', className: 'font-normal' },
+              { text: 'I am SHIMON,', className: 'font-normal' },
               { text: 'an AI creator and prompt engineer.', className: 'font-normal' },
               { text: 'I turn abstract concepts into generative visuals, cinematic video, and consistent brand identities.', className: 'font-normal' },
             ]}
