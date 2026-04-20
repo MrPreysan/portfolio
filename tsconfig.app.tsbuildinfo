@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/animations/animatedletter.tsx","./src/components/animations/wordspullup.tsx","./src/components/animations/wordspullupmultistyle.tsx","./src/components/sections/about.tsx","./src/components/sections/hero.tsx","./src/components/sections/works.tsx","./src/data/works.ts"],"version":"5.9.3"}
