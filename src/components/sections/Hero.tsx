@@ -95,7 +95,7 @@ export default function Hero() {
                 className="text-black font-medium text-xs sm:text-sm md:text-base"
                 style={{ lineHeight: 1.2 }}
               >
-                I'm Simon Hryhorovych — an AI creator and prompt engineer crafting generative visuals, cinematic video, and brand identities.
+                Creative technologist based in Barcelona. I build AI-native visual pipelines — generative imagery, cinematic video, and brand identities.
               </p>
             </motion.div>
 

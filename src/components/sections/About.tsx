@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { Send } from 'lucide-react'
 import WordsPullUpMultiStyle from '../animations/WordsPullUpMultiStyle'
 
-const BODY_TEXT = 'Through freelance and personal projects, I produce AI-generated imagery and cinematic video for brands and products, curate custom visual datasets for mobile applications, and craft commercial advertising creatives. I combine generative AI pipelines with a professional post-production toolkit — Photoshop, Illustrator, Premiere Pro, and After Effects — for finishing, compositing, and motion design.'
+const BODY_TEXT = 'Based in Barcelona. I work with generative AI tools — Midjourney, Flux, Stable Diffusion, Runway, Kling — and a professional post-production stack: Photoshop, Illustrator, Premiere Pro, After Effects. I build visual pipelines that keep character, style, and brand identity consistent across every frame, and finish everything with hands-on compositing and motion design. Currently focused on personal creative series alongside freelance work.'
 
 export default function About() {
   const labelRef = useRef(null)
@@ -35,7 +35,7 @@ export default function About() {
           animate={isLabelInView ? { y: 0, opacity: 1 } : { y: 10, opacity: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          ARTIST
+          CREATIVE TECHNOLOGIST
         </motion.p>
 
         {/* Main heading */}
@@ -46,8 +46,8 @@ export default function About() {
           <WordsPullUpMultiStyle
             segments={[
               { text: 'I am SHIMON,', className: 'font-normal' },
-              { text: 'an AI creator and prompt engineer.', className: 'font-normal' },
-              { text: 'I turn abstract concepts into generative visuals, cinematic video, and consistent brand identities.', className: 'font-normal' },
+              { text: 'a creative technologist building AI-native visual pipelines.', className: 'font-normal' },
+              { text: 'From a single prompt to a finished cinematic frame — generative imagery, video, and brand identities made end to end.', className: 'font-normal' },
             ]}
           />
         </div>
