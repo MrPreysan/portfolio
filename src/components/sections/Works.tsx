@@ -1,20 +1,27 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import WordsPullUpMultiStyle from '../animations/WordsPullUpMultiStyle'
-import { works } from '../../data/works'
+import { works, type Work } from '../../data/works'
+import WorksLightbox from '../WorksLightbox'
 
-function WorkCard({ work, index }: { work: typeof works[number]; index: number }) {
+function WorkCard({
+  work,
+  index,
+  onClick,
+}: {
+  work: Work
+  index: number
+  onClick: () => void
+}) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
 
   return (
-    <motion.a
+    <motion.button
       ref={ref}
-      href={work.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative overflow-hidden rounded-2xl cursor-pointer h-[520px] md:h-[640px] lg:h-[760px]"
+      onClick={onClick}
+      className="group relative overflow-hidden rounded-2xl cursor-pointer h-[520px] md:h-[640px] lg:h-[760px] w-full text-left"
       initial={{ scale: 0.95, opacity: 0 }}
       animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
       transition={{
@@ -44,11 +51,13 @@ function WorkCard({ work, index }: { work: typeof works[number]; index: number }
         </span>
         <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-[#E1E0CC]/70" />
       </div>
-    </motion.a>
+    </motion.button>
   )
 }
 
 export default function Works() {
+  const [activeWork, setActiveWork] = useState<Work | null>(null)
+
   return (
     <section id="works" className="min-h-screen bg-black px-4 pb-16 md:pb-24 pt-8 md:pt-16 relative">
       {/* Noise overlay */}
@@ -67,10 +76,17 @@ export default function Works() {
         {/* 4-column card grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {works.map((work, i) => (
-            <WorkCard key={work.title} work={work} index={i} />
+            <WorkCard
+              key={work.title}
+              work={work}
+              index={i}
+              onClick={() => setActiveWork(work)}
+            />
           ))}
         </div>
       </div>
+
+      <WorksLightbox work={activeWork} onClose={() => setActiveWork(null)} />
     </section>
   )
 }
