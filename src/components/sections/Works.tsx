@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import WordsPullUpMultiStyle from '../animations/WordsPullUpMultiStyle'
 import { works, type Work } from '../../data/works'
 import WorksLightbox from '../WorksLightbox'
+import { useDriveFolder } from '../../hooks/useDriveFolder'
 
 function WorkCard({
   work,
@@ -16,6 +17,9 @@ function WorkCard({
 }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const { files, loading } = useDriveFolder(work.folderId)
+  const latest = files[0]
+  const useDrive = !loading && latest?.mimeType?.startsWith('video/')
 
   return (
     <motion.button
@@ -31,15 +35,24 @@ function WorkCard({
       }}
       whileHover={{ scale: 0.97 }}
     >
-      {/* Video background */}
-      <video
-        src={work.videoSrc}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      {/* Video background — Drive iframe when available, static fallback otherwise */}
+      {useDrive ? (
+        <iframe
+          src={`https://drive.google.com/file/d/${latest.id}/preview`}
+          className="absolute inset-0 w-full h-full pointer-events-none scale-[1.5]"
+          allow="autoplay"
+          title={latest.name}
+        />
+      ) : (
+        <video
+          src={work.videoSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
 
       {/* Gradient for readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
