@@ -19,7 +19,9 @@ function WorkCard({
   const isInView = useInView(ref, { once: true, margin: '-50px' })
   const { files, loading } = useDriveFolder(work.folderId)
   const latest = files[0]
-  const useDrive = !loading && latest?.mimeType?.startsWith('video/')
+  const thumbnailUrl = !loading && latest
+    ? `https://drive.google.com/thumbnail?id=${latest.id}&sz=w1920`
+    : null
 
   return (
     <motion.button
@@ -35,13 +37,12 @@ function WorkCard({
       }}
       whileHover={{ scale: 0.97 }}
     >
-      {/* Video background — Drive iframe when available, static fallback otherwise */}
-      {useDrive ? (
-        <iframe
-          src={`https://drive.google.com/file/d/${latest.id}/preview`}
-          className="absolute inset-0 w-full h-full pointer-events-none scale-[1.5]"
-          allow="autoplay"
-          title={latest.name}
+      {thumbnailUrl ? (
+        <img
+          src={thumbnailUrl}
+          alt={work.title}
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
         />
       ) : (
         <video
