@@ -18,7 +18,7 @@ export const works: Work[] = [
   {
     title: 'Generative Video',
     videoSrc: '/works/generative-train-web.mp4',
-    folderId: '18qj-mXlEtRd8S1Bav8s6ZiBJfQcrAd6o',
+    folderId: '1BbrU211NaAOmBURfigm9J-IXBf1AyZ9X',
   },
   {
     title: 'Motion Design',
