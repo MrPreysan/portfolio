@@ -35,7 +35,7 @@ export default function WorksLightbox({ work, onClose }: Props) {
       <AnimatePresence>
         {work && (
           <motion.div
-            className="fixed inset-0 z-50 flex flex-col bg-black/60 backdrop-blur-xl overflow-y-auto py-12 md:py-20"
+            className="fixed inset-0 z-50 flex flex-col bg-black/60 backdrop-blur-xl overflow-y-auto py-6 sm:py-12 md:py-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -43,7 +43,7 @@ export default function WorksLightbox({ work, onClose }: Props) {
             onClick={onClose}
           >
             <motion.div
-              className="relative w-full max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col gap-6"
+              className="relative w-full max-w-[1600px] mx-auto px-3 sm:px-6 md:px-12 flex flex-col gap-6"
               initial={{ scale: 0.97, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.97, opacity: 0 }}
@@ -52,7 +52,7 @@ export default function WorksLightbox({ work, onClose }: Props) {
             >
               {/* Header */}
               <div className="flex items-center justify-between">
-                <h2 className="text-[#E1E0CC] text-2xl md:text-3xl font-medium">
+                <h2 className="text-[#E1E0CC] text-2xl sm:text-3xl md:text-4xl font-medium">
                   {work.title}
                 </h2>
                 <button
@@ -66,7 +66,7 @@ export default function WorksLightbox({ work, onClose }: Props) {
 
               {/* Content grid */}
               {loading && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} />)}
                 </div>
               )}
@@ -78,7 +78,7 @@ export default function WorksLightbox({ work, onClose }: Props) {
               )}
 
               {!loading && files.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {files.map((file) => (
                     <button
                       key={file.id}

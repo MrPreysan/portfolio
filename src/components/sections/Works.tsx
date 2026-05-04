@@ -27,7 +27,7 @@ function WorkCard({
     <motion.button
       ref={ref}
       onClick={onClick}
-      className="group relative overflow-hidden rounded-2xl cursor-pointer h-[520px] md:h-[640px] lg:h-[760px] w-full text-left"
+      className="group relative overflow-hidden rounded-2xl cursor-pointer h-[60vh] sm:h-[520px] md:h-[640px] lg:h-[760px] w-full text-left"
       initial={{ scale: 0.95, opacity: 0 }}
       animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
       transition={{

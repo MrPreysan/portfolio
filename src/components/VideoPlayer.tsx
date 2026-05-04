@@ -28,15 +28,15 @@ export function VideoPlayer({ file, onClose }: Props) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-2xl flex items-center justify-center p-6 md:p-12"
+          className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-2 sm:p-6 md:p-12"
           onClick={onClose}
         >
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-colors z-10"
             aria-label="Close"
           >
-            <X className="w-6 h-6 text-white" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </button>
 
           <motion.div
@@ -44,12 +44,12 @@ export function VideoPlayer({ file, onClose }: Props) {
             animate={{ scale: 1 }}
             exit={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="relative w-full max-w-7xl aspect-video"
+            className="relative w-full h-full sm:w-full sm:h-auto sm:max-w-[1600px] sm:aspect-video sm:max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <iframe
               src={`https://drive.google.com/file/d/${file.id}/preview`}
-              className="absolute inset-0 w-full h-full rounded-lg border-0"
+              className="absolute inset-0 w-full h-full sm:rounded-lg border-0"
               allow="autoplay; fullscreen"
               allowFullScreen
               title={file.name}
